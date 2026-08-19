@@ -24,25 +24,26 @@ export function Menu() {
         <SectionTitle title="المنيو" sub={group.hint} />
 
         <div className="mt-8 flex flex-wrap justify-center gap-2">
-          {groups.map((g) => {
-            const isActive = active === g.id;
-            return (
-              <motion.button
-                key={g.id}
-                onClick={() => setActive(g.id)}
-                whileHover={{ scale: 1.06, y: -3 }}
-                whileTap={{ scale: 0.94 }}
-                animate={{
-                  backgroundColor: isActive ? "var(--maroon)" : "transparent",
-                  color: isActive ? "var(--cream)" : "var(--maroon)",
-                }}
-                transition={{ type: "spring", stiffness: 320, damping: 26 }}
-                className="rounded-full px-5 py-2.5 font-display text-sm"
-              >
-                {g.label}
-              </motion.button>
-            );
-          })}
+          {groups.map((g) => (
+            <motion.button
+              key={g.id}
+              onClick={() => setActive(g.id)}
+              whileHover={{ scale: 1.06, y: -3 }}
+              whileTap={{ scale: 0.94 }}
+              className={`relative rounded-full px-5 py-2.5 font-display text-sm transition-colors ${
+                active === g.id ? "text-primary-foreground" : "text-primary"
+              }`}
+            >
+              {active === g.id && (
+                <motion.span
+                  layoutId="tab-pill"
+                  className="absolute inset-0 -z-10 rounded-full ribbon"
+                  transition={{ type: "spring", stiffness: 320, damping: 26 }}
+                />
+              )}
+              {g.label}
+            </motion.button>
+          ))}
         </div>
 
         <AnimatePresence mode="wait">

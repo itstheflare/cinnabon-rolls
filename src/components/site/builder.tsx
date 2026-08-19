@@ -27,28 +27,25 @@ export function Builder() {
         <SectionTitle title="اصنع بوكسك" sub="اختر الحجم وعبّي القطع بنفسك 🎯" />
 
         <div className="mt-8 flex flex-wrap justify-center gap-2">
-          {boxes.map((b) => {
-            const isSelected = size === b.pieces;
-            return (
-              <motion.button
-                key={b.id}
-                onClick={() => {
-                  setSize(b.pieces);
-                  setSlots((s) => s.slice(0, b.pieces));
-                }}
-                whileHover={{ scale: 1.07, y: -3 }}
-                whileTap={{ scale: 0.93 }}
-                animate={{
-                  backgroundColor: isSelected ? "var(--maroon)" : "transparent",
-                  color: isSelected ? "var(--cream)" : "var(--maroon)",
-                }}
-                transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                className="rounded-full px-5 py-2.5 font-display"
-              >
-                {b.pieces} قطع
-              </motion.button>
-            );
-          })}
+          {boxes.map((b) => (
+            <motion.button
+              key={b.id}
+              onClick={() => {
+                setSize(b.pieces);
+                setSlots((s) => s.slice(0, b.pieces));
+              }}
+              whileHover={{ scale: 1.07, y: -3 }}
+              whileTap={{ scale: 0.93 }}
+              className={`relative rounded-full px-5 py-2.5 font-display ${
+                size === b.pieces ? "text-primary-foreground" : "text-primary"
+              }`}
+            >
+              {size === b.pieces && (
+                <motion.span layoutId="size-pill" className="absolute inset-0 -z-10 rounded-full ribbon" />
+              )}
+              {b.pieces} قطع
+            </motion.button>
+          ))}
         </div>
 
         {/* the box */}
