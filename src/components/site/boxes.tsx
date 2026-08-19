@@ -79,7 +79,7 @@ export function Boxes() {
                   whileTap={{ scale: 0.94 }}
                   onClick={() => {
                     add({ key: b.id, name: `بوكس ${b.pieces} قطع`, price: b.price, img: images.boxImg });
-                    toast.success(`بوكس ${b.pieces} قطع انضاف 📦`, { description: `وفّرت ${b.was - b.price} ريال` });
+                    toast.success(`بوكس ${b.pieces} قطع انضاف 📦`, { description: `وفّرت ${b.was - b.price} جنيه` });
                     setOpen(true);
                   }}
                   className="mt-4 w-full rounded-full ribbon py-2.5 font-display"

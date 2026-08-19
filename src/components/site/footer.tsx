@@ -1,11 +1,15 @@
 import { motion } from "motion/react";
-import { Instagram, Phone, MapPin, Clock } from "lucide-react";
+import { Instagram, Phone, MapPin } from "lucide-react";
 import { images } from "@/lib/menu-data";
 
 const info = [
-  { icon: Clock, label: "كل يوم", value: "٤ عصراً — ١ بعد منتصف الليل" },
-  { icon: MapPin, label: "الفرع", value: "شارع التحلية، الرياض" },
-  { icon: Phone, label: "اتصل", value: "0500 000 000" },
+  {
+    icon: MapPin,
+    label: "الفرع",
+    value:
+      "مول مون يارد، بجوار دار مصر، بعد كوتونيل، الدور الأول، مدينة الشروق\nMoonYard Mall, Next To Dar Misr, After Cottonil, First Floor, AlShrouq City",
+  },
+  { icon: Phone, label: "اتصل", value: "+2010140885351" },
 ];
 
 export function Footer() {
@@ -43,10 +47,10 @@ export function Footer() {
           viewport={{ once: true }}
           className="mt-4 text-center font-display text-5xl"
         >
-          ونـز سينابون
+          رولز سينابون
         </motion.h2>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2">
           {info.map((it, i) => (
             <motion.div
               key={it.label}
@@ -59,7 +63,7 @@ export function Footer() {
             >
               <it.icon className="mx-auto size-6 text-accent" />
               <p className="mt-2 font-display text-lg">{it.label}</p>
-              <p className="text-sm text-primary-foreground/75">{it.value}</p>
+              <p className="text-sm whitespace-pre-line text-primary-foreground/75">{it.value}</p>
             </motion.div>
           ))}
         </div>
@@ -77,7 +81,7 @@ export function Footer() {
         </div>
 
         <p className="mt-10 text-center text-xs text-primary-foreground/60">
-          © {new Date().getFullYear()} ونـز سينابون — كل الحقوق محفوظة
+          © {new Date().getFullYear()} رولز سينابون — كل الحقوق محفوظة
         </p>
       </div>
     </footer>

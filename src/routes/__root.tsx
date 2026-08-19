@@ -74,7 +74,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "رولز سينابون" },
+      { title: "rollsCinnabon" },
       { name: "description", content: "رولز سينابون — سينابون، بيغل وحلويات طازجة" },
       { property: "og:title", content: "رولز سينابون" },
       { property: "og:description", content: "رولز سينابون — سينابون، بيغل وحلويات طازجة" },

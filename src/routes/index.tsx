@@ -16,19 +16,19 @@ import { Footer } from "@/components/site/footer";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "ونـز سينابون | لفّات دافئة طازة كل ساعة" },
+      { title: "rollsCinnabon" },
       {
         name: "description",
         content:
           "لفّات سينابون دافئة بكريمة سايحة وكراميل يمشي لحاله. شوف المنيو، اطلب بوكس جاهز، أو اصنع بوكسك الخاص.",
       },
-      { property: "og:title", content: "ونـز سينابون | لفّات دافئة طازة كل ساعة" },
+      { property: "og:title", content: "رولز سينابون | لفّات دافئة طازة كل ساعة" },
       {
         property: "og:description",
         content: "لفّات سينابون دافئة بكريمة سايحة وكراميل يمشي لحاله. اصنع بوكسك الخاص أونلاين.",
       },
-      { property: "og:locale", content: "ar_SA" },
-      { name: "twitter:title", content: "ونـز سينابون | لفّات دافئة طازة كل ساعة" },
+      { property: "og:locale", content: "ar_EG" },
+      { name: "twitter:title", content: "رولز سينابون | لفّات دافئة طازة كل ساعة" },
       {
         name: "twitter:description",
         content: "لفّات سينابون دافئة بكريمة سايحة وكراميل يمشي لحاله.",

@@ -109,7 +109,7 @@ export function Builder() {
               {slots.length} / {size} قطع
             </p>
             <motion.p key={box.price} animate={{ scale: [1.15, 1] }} className="font-display text-2xl text-primary">
-              {box.price} ريال
+              {box.price} جنيه
               <span className="ms-2 text-sm text-muted-foreground line-through">{box.was}</span>
             </motion.p>
           </div>

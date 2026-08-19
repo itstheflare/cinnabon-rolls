@@ -41,7 +41,7 @@ export function Nav() {
             >
               🌀
             </motion.span>
-            <span>ونـز سينابون</span>
+            <span>رولز سينابون</span>
           </motion.a>
 
           <ul className="hidden items-center gap-1 md:flex">
@@ -151,7 +151,7 @@ function CartDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
                     )}
                     <div className="flex-1">
                       <p className="font-display text-base leading-tight">{l.name}</p>
-                      <p className="text-sm text-muted-foreground">{l.price} ريال</p>
+                      <p className="text-sm text-muted-foreground">{l.price} جنيه</p>
                     </div>
                     <div className="flex items-center gap-1.5">
                       <motion.button
@@ -191,7 +191,7 @@ function CartDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
               <div className="flex items-center justify-between font-display text-xl">
                 <span>المجموع</span>
                 <motion.span key={total} animate={{ scale: [1.2, 1] }} className="text-primary">
-                  {total} ريال
+                  {total} جنيه
                 </motion.span>
               </div>
               <motion.button
@@ -199,15 +199,19 @@ function CartDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
                 whileTap={{ scale: 0.97 }}
                 disabled={lines.length === 0}
                 onClick={() => {
-                  toast.success("تم ارسال طلبك للمخبز 🌀", {
-                    description: `${lines.length} اصناف • ${total} ريال — بنتواصل معك خلال دقايق`,
+                  const orderLines = lines.map((l) => `• ${l.name} × ${l.qty} — ${l.price * l.qty} جنيه`).join("\n");
+                  const message = `اهلاً رولز سينابون 🌀\nعايز اطلب:\n${orderLines}\n\nالمجموع: ${total} جنيه`;
+                  const waUrl = `https://wa.me/2010140885351?text=${encodeURIComponent(message)}`;
+                  window.open(waUrl, "_blank", "noopener,noreferrer");
+                  toast.success("جاري تحويلك للواتساب 🌀", {
+                    description: `${lines.length} اصناف • ${total} جنيه — كمّل الطلب من هناك`,
                   });
                   clear();
                   onClose();
                 }}
                 className="w-full rounded-full ribbon py-3.5 font-display text-lg disabled:opacity-40"
               >
-                اطلب الآن
+                اطلب عبر واتساب
               </motion.button>
             </div>
           </motion.aside>

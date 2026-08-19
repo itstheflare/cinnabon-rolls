@@ -115,7 +115,7 @@ function ItemCard({ item, index, onPick }: { item: Item; index: number; onPick: 
       <h3 className="mt-4 text-center font-display text-2xl text-primary">{item.name}</h3>
       <div className="mt-2 flex items-center justify-center gap-1 font-display text-xl text-accent-foreground">
         <motion.span whileHover={{ scale: 1.2 }}>{item.price}</motion.span>
-        <span className="text-sm text-muted-foreground">ريال</span>
+        <span className="text-sm text-muted-foreground">جنيه</span>
       </div>
       <motion.button
         onClick={onPick}
@@ -218,7 +218,7 @@ function AddonDialog({ item, onClose }: { item: Item | null; onClose: () => void
                 </motion.button>
               </div>
               <motion.p key={unit * qty} animate={{ scale: [1.15, 1] }} className="font-display text-2xl text-primary">
-                {unit * qty} ريال
+                {unit * qty} جنيه
               </motion.p>
             </div>
 
@@ -229,7 +229,7 @@ function AddonDialog({ item, onClose }: { item: Item | null; onClose: () => void
                 const suffix = extras.length ? ` + ${extras.map((e) => e.name).join(" + ")}` : "";
                 add(
                   {
-                    key: item.id + selected.sort().join("-"),
+                    key: item.id + [...selected].sort().join("-"),
                     name: item.name + suffix,
                     price: unit,
                     img: item.img,
