@@ -22,7 +22,7 @@ export function Boxes() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center font-display text-[clamp(2.2rem,7vw,4.5rem)] leading-none"
+          className="display-xl text-center text-[clamp(2.4rem,7vw,4.75rem)]"
         >
           بوكسات السينابون
         </motion.h2>
@@ -30,7 +30,7 @@ export function Boxes() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mt-3 text-center text-primary-foreground/75"
+          className="lead-text mt-3 text-center text-primary-foreground/75"
         >
           اوفر بكتير 🤑 كل ما زادت القطع زاد التوفير
         </motion.p>
@@ -53,7 +53,7 @@ export function Boxes() {
                   whileInView={{ scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.3 + i * 0.08, type: "spring", stiffness: 300 }}
-                  className="absolute -top-1 -left-1 rounded-full bg-accent px-3 py-1 font-display text-sm text-accent-foreground"
+                  className="absolute top-3 end-3 z-10 rounded-full bg-accent px-3 py-1 font-display text-sm text-accent-foreground"
                 >
                   وفّر {save}%
                 </motion.span>
@@ -67,7 +67,7 @@ export function Boxes() {
                   whileHover={{ rotate: [0, -8, 8, 0], scale: 1.1 }}
                   transition={{ duration: 0.7 }}
                 />
-                <h3 className="mt-4 font-display text-3xl text-primary">بوكس {b.pieces} قطع</h3>
+                <h3 className="display-xl mt-4 text-3xl text-primary">بوكس {b.pieces} قطع</h3>
                 <div className="mt-2 flex items-center justify-center gap-3">
                   <span className="font-display text-lg text-muted-foreground line-through">{b.was}</span>
                   <motion.span whileHover={{ scale: 1.15 }} className="font-display text-3xl text-primary">

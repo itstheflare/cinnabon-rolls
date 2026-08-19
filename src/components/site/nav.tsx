@@ -25,7 +25,7 @@ export function Nav() {
         initial={{ y: -80 }}
         animate={{ y: 0 }}
         transition={{ type: "spring", stiffness: 90, damping: 16, delay: 0.1 }}
-        className="fixed inset-x-0 top-1.5 z-40 px-3 sm:px-6"
+        className="fixed inset-x-0 top-3 z-40 px-3 sm:px-6"
       >
         <nav className="mx-auto flex max-w-6xl items-center justify-between gap-3 rounded-full ribbon px-4 py-2.5 backdrop-blur">
           <motion.a
@@ -75,7 +75,7 @@ export function Nav() {
                   animate={{ scale: 1, y: 0 }}
                   exit={{ scale: 0 }}
                   transition={{ type: "spring", stiffness: 400, damping: 14 }}
-                  className="absolute -top-2 -left-2 grid size-6 place-items-center rounded-full bg-primary text-xs text-primary-foreground"
+                  className="absolute -top-2.5 -end-2.5 grid size-6 ring-2 ring-background place-items-center rounded-full bg-primary text-xs text-primary-foreground"
                 >
                   {count}
                 </motion.span>

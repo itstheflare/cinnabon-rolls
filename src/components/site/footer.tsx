@@ -1,15 +1,15 @@
 import { motion } from "motion/react";
-import { Instagram, Phone, MapPin } from "lucide-react";
+import { Phone, MapPin } from "lucide-react";
 import { images } from "@/lib/menu-data";
 
-const info = [
+const info: { icon: typeof MapPin; label: string; value: string; ltr?: boolean }[] = [
   {
     icon: MapPin,
     label: "الفرع",
     value:
       "مول مون يارد، بجوار دار مصر، بعد كوتونيل، الدور الأول، مدينة الشروق\nMoonYard Mall, Next To Dar Misr, After Cottonil, First Floor, AlShrouq City",
   },
-  { icon: Phone, label: "اتصل", value: "+2010140885351" },
+  { icon: Phone, label: "اتصل", value: "+20 101 408 85351", ltr: true },
 ];
 
 export function Footer() {
@@ -45,7 +45,7 @@ export function Footer() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-4 text-center font-display text-5xl"
+          className="display-xl mt-4 text-center text-[clamp(2.4rem,6vw,4rem)]"
         >
           رولز سينابون
         </motion.h2>
@@ -63,20 +63,24 @@ export function Footer() {
             >
               <it.icon className="mx-auto size-6 text-accent" />
               <p className="mt-2 font-display text-lg">{it.label}</p>
-              <p className="text-sm whitespace-pre-line text-primary-foreground/75">{it.value}</p>
+              <p
+                className="text-sm whitespace-pre-line text-primary-foreground/75"
+                dir={it.ltr ? "ltr" : undefined}
+              >
+                {it.value}
+              </p>
             </motion.div>
           ))}
         </div>
 
         <div className="mt-10 flex justify-center">
           <motion.a
-            href="#top"
+            href="#menu"
             whileHover={{ scale: 1.08, rotate: -3 }}
             whileTap={{ scale: 0.94 }}
-            className="flex items-center gap-2 rounded-full bg-accent px-6 py-3 font-display text-accent-foreground"
+            className="rounded-full bg-accent px-8 py-3 font-display text-lg text-accent-foreground"
           >
-            <Instagram className="size-5" />
-            تابعنا على انستقرام
+            اطلب دلوقتي
           </motion.a>
         </div>
 

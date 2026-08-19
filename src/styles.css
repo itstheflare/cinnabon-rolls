@@ -204,3 +204,51 @@
   paint-order: stroke fill;
 }
 
+
+/* Fancy Arabic-safe typography helpers */
+@utility text-gradient-caramel {
+  background-image: linear-gradient(120deg, var(--maroon) 0%, var(--caramel) 55%, var(--maroon-deep) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: normal;
+}
+
+@utility display-xl {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: normal;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+@utility title-flourish {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.35em;
+  &::after {
+    content: "";
+    position: absolute;
+    inset-inline: 12%;
+    bottom: 0.05em;
+    height: 0.14em;
+    border-radius: 999px;
+    background: var(--gradient-caramel);
+    opacity: 0.85;
+  }
+}
+
+@utility lead-text {
+  font-size: 1.05rem;
+  line-height: 2;
+  letter-spacing: normal;
+  max-width: 46ch;
+  margin-inline: auto;
+  text-wrap: pretty;
+}
+
+@utility num-fancy {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+  letter-spacing: 0.01em;
+}

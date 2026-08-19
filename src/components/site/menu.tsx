@@ -24,35 +24,42 @@ export function Menu() {
         <SectionTitle title="المنيو" sub={group.hint} />
 
         <div className="mt-8 flex flex-wrap justify-center gap-2">
-          {groups.map((g) => (
-            <motion.button
-              key={g.id}
-              onClick={() => setActive(g.id)}
-              whileHover={{ scale: 1.06, y: -3 }}
-              whileTap={{ scale: 0.94 }}
-              className={`relative rounded-full px-5 py-2.5 font-display text-sm transition-colors ${
-                active === g.id ? "text-primary-foreground" : "text-primary"
-              }`}
-            >
-              {active === g.id && (
-                <motion.span
-                  layoutId="tab-pill"
-                  className="absolute inset-0 -z-10 rounded-full ribbon"
-                  transition={{ type: "spring", stiffness: 320, damping: 26 }}
-                />
-              )}
-              {g.label}
-            </motion.button>
-          ))}
+          {groups.map((g) => {
+            const isActive = active === g.id;
+            return (
+              <motion.button
+                key={g.id}
+                onClick={() => setActive(g.id)}
+                whileHover={{ scale: 1.06, y: -3 }}
+                whileTap={{ scale: 0.94 }}
+                animate={{
+                  backgroundColor: isActive ? "var(--maroon)" : "transparent",
+                  color: isActive ? "var(--cream)" : "var(--maroon)",
+                }}
+                transition={{ type: "spring", stiffness: 320, damping: 26 }}
+                className="rounded-full px-5 py-2.5 font-display text-sm"
+              >
+                {g.label}
+              </motion.button>
+            );
+          })}
         </div>
 
-        <motion.div layout className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          <AnimatePresence mode="popLayout">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={active}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="mt-10 grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4"
+          >
             {group.items.map((item, i) => (
               <ItemCard key={item.id} item={item} index={i} onPick={() => setPicked(item)} />
             ))}
-          </AnimatePresence>
-        </motion.div>
+          </motion.div>
+        </AnimatePresence>
+
       </div>
 
       <AddonDialog item={picked} onClose={() => setPicked(null)} />
@@ -64,11 +71,11 @@ export function SectionTitle({ title, sub }: { title: string; sub?: string }) {
   return (
     <div className="text-center">
       <motion.h2
-        initial={{ opacity: 0, scale: 0.7, rotate: -4 }}
-        whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-        viewport={{ once: true, amount: 0.6 }}
+        initial={{ opacity: 0, scale: 0.8, y: 20 }}
+        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.4 }}
         transition={{ type: "spring", stiffness: 160, damping: 14 }}
-        className="font-display text-[clamp(2.2rem,7vw,4.5rem)] leading-none text-primary"
+        className="display-xl title-flourish text-gradient-caramel text-[clamp(2.4rem,7vw,4.75rem)]"
       >
         {title}
       </motion.h2>
@@ -77,7 +84,7 @@ export function SectionTitle({ title, sub }: { title: string; sub?: string }) {
           key={sub}
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mt-3 text-muted-foreground"
+          className="lead-text mt-3 text-muted-foreground"
         >
           {sub}
         </motion.p>
@@ -89,15 +96,13 @@ export function SectionTitle({ title, sub }: { title: string; sub?: string }) {
 function ItemCard({ item, index, onPick }: { item: Item; index: number; onPick: () => void }) {
   return (
     <motion.article
-      layout
       initial={{ opacity: 0, y: 40, rotate: index % 2 ? 3 : -3 }}
-      whileInView={{ opacity: 1, y: 0, rotate: 0 }}
-      exit={{ opacity: 0, scale: 0.85 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ delay: index * 0.06, type: "spring", stiffness: 140, damping: 16 }}
+      animate={{ opacity: 1, y: 0, rotate: 0 }}
+      transition={{ delay: index * 0.05, type: "spring", stiffness: 140, damping: 16 }}
       whileHover={{ y: -12, rotate: index % 2 ? 1.5 : -1.5 }}
-      className="group relative overflow-hidden rounded-[2rem] bg-card p-5 shadow-[var(--shadow-soft)]"
+      className="group relative flex h-full flex-col overflow-hidden rounded-[2rem] bg-card p-5 shadow-[var(--shadow-soft)]"
     >
+
       <motion.span
         className="pointer-events-none absolute -top-16 -left-16 size-40 rounded-full opacity-0 blur-2xl transition-opacity group-hover:opacity-40"
         style={{ background: item.tint }}
@@ -112,16 +117,18 @@ function ItemCard({ item, index, onPick }: { item: Item; index: number; onPick: 
         whileHover={{ rotate: 360, scale: 1.12 }}
         transition={{ duration: 1.1, ease: "easeInOut" }}
       />
-      <h3 className="mt-4 text-center font-display text-2xl text-primary">{item.name}</h3>
-      <div className="mt-2 flex items-center justify-center gap-1 font-display text-xl text-accent-foreground">
-        <motion.span whileHover={{ scale: 1.2 }}>{item.price}</motion.span>
+      <h3 className="display-xl mt-4 text-center text-2xl text-primary">{item.name}</h3>
+      <div className="mt-2 mb-4 flex items-center justify-center gap-1 font-display text-xl text-accent-foreground">
+        <motion.span className="num-fancy" whileHover={{ scale: 1.2 }}>
+          {item.price}
+        </motion.span>
         <span className="text-sm text-muted-foreground">جنيه</span>
       </div>
       <motion.button
         onClick={onPick}
         whileHover={{ scale: 1.04 }}
         whileTap={{ scale: 0.94 }}
-        className="mt-4 flex w-full items-center justify-center gap-2 rounded-full ribbon py-2.5 font-display"
+        className="mt-auto flex w-full items-center justify-center gap-2 rounded-full ribbon pt-2.5 pb-2.5 font-display"
       >
         <Plus className="size-4" />
         اضف للسلة

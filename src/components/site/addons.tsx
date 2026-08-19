@@ -16,9 +16,7 @@ export function Addons() {
               viewport={{ once: true, amount: 0.5 }}
               transition={{ type: "spring", stiffness: 120, damping: 16 }}
               whileHover={{ scale: 1.02 }}
-              className={`flex items-center gap-5 overflow-hidden rounded-[2rem] bg-card p-5 shadow-[var(--shadow-soft)] ${
-                i % 2 ? "flex-row-reverse" : ""
-              }`}
+              className="flex items-center gap-5 overflow-hidden rounded-[2rem] bg-card p-5 shadow-[var(--shadow-soft)]"
             >
               <motion.span
                 className="grid size-20 shrink-0 place-items-center rounded-full text-4xl"
@@ -29,7 +27,7 @@ export function Addons() {
                 {a.emoji}
               </motion.span>
               <div className="flex-1">
-                <h3 className="font-display text-3xl text-primary">{a.name}</h3>
+                <h3 className="display-xl text-3xl text-primary">{a.name}</h3>
                 <motion.div
                   className="mt-2 h-2 rounded-full"
                   style={{ background: a.tint }}
@@ -41,7 +39,7 @@ export function Addons() {
               </div>
               <motion.span
                 whileHover={{ scale: 1.2, rotate: -6 }}
-                className="rounded-full bg-primary px-4 py-2 font-display text-xl text-primary-foreground"
+                className="num-fancy shrink-0 rounded-full bg-primary px-4 py-2 font-display text-xl text-primary-foreground"
               >
                 +{a.price}
               </motion.span>

@@ -59,20 +59,15 @@ export function Hero() {
           طازج من الفرن كل ساعة 🔥
         </motion.p>
 
-        <h1 className="mt-6 font-display text-[clamp(3rem,13vw,8rem)] leading-[0.85] text-primary">
-          {"سينابون".split("").map((ch, i) => (
-            <motion.span
-              key={i}
-              className="inline-block"
-              initial={{ y: 90, opacity: 0, rotate: -12 }}
-              animate={{ y: 0, opacity: 1, rotate: 0 }}
-              transition={{ delay: 0.1 + i * 0.07, type: "spring", stiffness: 220, damping: 14 }}
-              whileHover={{ y: -14, rotate: 8, color: "var(--caramel)" }}
-            >
-              {ch}
-            </motion.span>
-          ))}
-        </h1>
+        <motion.h1
+          initial={{ y: 60, opacity: 0, scale: 0.9 }}
+          animate={{ y: 0, opacity: 1, scale: 1 }}
+          transition={{ delay: 0.15, type: "spring", stiffness: 160, damping: 15 }}
+          whileHover={{ scale: 1.03, rotate: -1 }}
+          className="mt-6 font-display text-[clamp(3rem,13vw,8rem)] leading-[0.95] tracking-normal text-gradient-caramel drop-shadow-[0_14px_28px_oklch(0.38_0.16_22/0.25)]"
+        >
+          سينابون
+        </motion.h1>
 
         <motion.div
           style={{ y: yBig, rotate: rotBig }}
@@ -98,7 +93,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.9 }}
-          className="max-w-md text-lg text-muted-foreground"
+          className="lead-text mt-2 text-muted-foreground"
         >
           لفّات دافئة، كريمة سايحة، وكراميل يمشي لحاله. جرّب البوكس واحسبها بنفسك 👇
         </motion.p>

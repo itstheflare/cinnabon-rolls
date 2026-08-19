@@ -1,10 +1,10 @@
 # رولز سينابون
 
-A TanStack Start web app for رولز سينابون — sweet rolls, bagels, and treats.
+Website for رولز سينابون — سينابون، بيغل وحلويات طازجة.
 
 ## Development
 
-You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+You need Node.js (or Bun) installed.
 
 ```sh
 git clone <this-repository-url>
